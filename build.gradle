@@ -20,9 +20,20 @@ ext {
 }
 
 dependencies {
+    // start spring boot web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // start Kafka
     implementation 'org.springframework.cloud:spring-cloud-stream'
+
+    // docker compose auto start
+    testAndDevelopmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 }
 
 dependencyManagement {
