@@ -11,6 +11,7 @@ spring:
       lifecycle-management: start_and_stop
       stop:
         command: down
-        timeout: 1m
+        timeout: 10
+
 server:
   port: 8086
