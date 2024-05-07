@@ -1,0 +1,12 @@
+spring:
+  docker:
+    compose:
+      file: './message-server/kafka-compose.yml'
+      enabled: true
+      lifecycle-management: start_and_stop
+      stop:
+        command: down
+        timeout: 10
+
+server:
+  port: 9999
