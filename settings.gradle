@@ -9,6 +9,7 @@ pluginManagement {
 rootProject.name = 'kafka-local-example'
 include (
         ':producer',
-        ':consumer'
+        ':consumer',
+        ':message-server'
 )
 
