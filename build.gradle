@@ -26,8 +26,11 @@ subprojects {
         // start spring boot web
         implementation 'org.springframework.boot:spring-boot-starter-web'
 
-        // start Kafka
+        // start spring cloud stream
         implementation 'org.springframework.cloud:spring-cloud-stream'
+
+        //start spring cloud kafka
+        implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka-streams'
 
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'
