@@ -1,4 +1,7 @@
 dependencies {
     // docker compose auto start
     testAndDevelopmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+    // start spring cloud stream
+    implementation 'org.springframework.cloud:spring-cloud-stream'
 }
