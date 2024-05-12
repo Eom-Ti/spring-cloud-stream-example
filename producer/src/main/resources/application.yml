@@ -1,16 +1,29 @@
 spring:
   cloud:
+    function:
+      definition: createExrateDataSupplier
     stream:
-      kafka:
-        streams:
-          binder:
-            brokers: localhost:9092
-            auto-add-partitions: true # independent of the KAFKA_AUTO_CREATE_TOPICS_ENABLE in compose file
-          bindings:
-            example-message-json:
-              producer:
-                configuration:
+      poller:
+        fixed-delay: 15000
+      function:
+        bindings:
+#          creekDataSupplier-out-0: output
+#          usgs-exrate-data: output
+#      bindings:
+#        output:
+          destination: usgs-exrate-data
 
+#      bindings:
+#        output:
+#          destination: usgs-exrate-data.json
+#          content-type: application/json
+
+
+exrate:
+  api:
+    base-url: https://www.koreaexim.go.kr
+    exrate-url: /site/program/financial/exchangeJSON
+    auth-key: cLYFavnQdYomm4e6z6ywg4fFZOrCOZBf
 
 
 
