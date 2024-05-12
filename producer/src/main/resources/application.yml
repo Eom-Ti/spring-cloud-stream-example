@@ -1,2 +1,19 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        streams:
+          binder:
+            brokers: localhost:9092
+            auto-add-partitions: true # independent of the KAFKA_AUTO_CREATE_TOPICS_ENABLE in compose file
+          bindings:
+            example-message-json:
+              producer:
+                configuration:
+
+
+
+
+
 server:
   port: 8086
