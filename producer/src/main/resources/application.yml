@@ -3,8 +3,8 @@ spring:
     function:
       definition: createExrateDataSupplier
     stream:
-      poller:
-        fixed-delay: 15000
+#      poller:
+#        fixed-delay: 15000
       function:
         bindings:
 #          creekDataSupplier-out-0: output
@@ -23,7 +23,6 @@ exrate:
   api:
     base-url: https://www.koreaexim.go.kr
     exrate-url: /site/program/financial/exchangeJSON
-    auth-key: cLYFavnQdYomm4e6z6ywg4fFZOrCOZBf
 
 
 
