@@ -3,21 +3,16 @@ spring:
     function:
       definition: createExrateDataSupplier
     stream:
-#      poller:
-#        fixed-delay: 15000
+      poller:
+        fixed-delay: 20000
       function:
         bindings:
-#          creekDataSupplier-out-0: output
-#          usgs-exrate-data: output
-#      bindings:
-#        output:
+          createExrateDataSupplier-out-0: output
+      bindings:
+        output:
           destination: usgs-exrate-data
-
-#      bindings:
-#        output:
-#          destination: usgs-exrate-data.json
-#          content-type: application/json
-
+          content-type: application/json
+          binder: kafka
 
 exrate:
   api:
