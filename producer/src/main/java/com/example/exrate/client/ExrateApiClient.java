@@ -1,9 +1,13 @@
 package com.example.exrate.client;
 
-import com.example.exrate.client.data.ExrateDataResult;
 
 public interface ExrateApiClient {
 
-    ExrateDataResult getExrate();
+    /**
+     * Get the exchange rate from the lookup server.
+     *
+     * @return String result
+     */
+    String getExrate();
 
 }
