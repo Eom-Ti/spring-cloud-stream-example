@@ -1,4 +1,7 @@
 spring:
+  config:
+    import:
+      - secrets-manager.yml
   cloud:
     function:
       definition: createExrateDataSupplier
@@ -18,6 +21,7 @@ exrate:
   api:
     base-url: https://www.koreaexim.go.kr
     exrate-url: /site/program/financial/exchangeJSON
+    auth-key: ${exrate.krexim.authKey}
 
 
 
