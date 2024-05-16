@@ -13,9 +13,8 @@ spring:
           createExrateDataSupplier-out-0: output
       bindings:
         output:
-          destination: usgs-exrate-data
+          destination: raw-exrate-data
           content-type: application/json
-          binder: kafka
 
 exrate:
   api:
