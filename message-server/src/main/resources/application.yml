@@ -7,6 +7,23 @@ spring:
       stop:
         command: down
         timeout: 10
+  cloud:
+    function:
+      definition: transformExrateData
+    stream:
+      function:
+        bindings:
+          transformExrateData-in-0: input
+          transformExrateData-out-0: output
+      bindings:
+        input:
+          destination: raw-exrate-data
+          content-type: application/json
+          group: exrate
+        output:
+          destination: exrate-data
+          content-type: application/json
+
 
 server:
   port: 9999
