@@ -1,7 +1,6 @@
 package com.example.exrate.batch;
 
 import com.example.exrate.client.ExrateApiClient;
-import io.micrometer.observation.Observation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +9,6 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 import java.util.function.Supplier;
 
 @Configuration
