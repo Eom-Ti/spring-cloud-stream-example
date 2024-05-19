@@ -14,16 +14,13 @@ spring:
       bindings:
         output:
           destination: raw-exrate-data
-          content-type: application/json
+          content-type: text/plain
 
 exrate:
   api:
     base-url: https://www.koreaexim.go.kr
     exrate-url: /site/program/financial/exchangeJSON
     auth-key: ${exrate.krexim.authKey}
-
-
-
 
 server:
   port: 8086
