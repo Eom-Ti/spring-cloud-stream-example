@@ -18,7 +18,7 @@ spring:
       bindings:
         input:
           destination: raw-exrate-data
-          content-type: application/json
+          content-type: text/plain
           group: exrate
         output:
           destination: exrate-data
