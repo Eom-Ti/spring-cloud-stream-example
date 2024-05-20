@@ -1,2 +1,4 @@
 dependencies {
+    // start exrate-functions module
+    implementation project(':exrate-functions')
 }
