@@ -1,2 +1,15 @@
+spring:
+  cloud:
+    function:
+      definition: log
+    stream:
+      function:
+        bindings:
+          log-in-0: input
+      bindings:
+        input:
+          destination: exrate-data
+          group: log
+
 server:
   port: 8087
