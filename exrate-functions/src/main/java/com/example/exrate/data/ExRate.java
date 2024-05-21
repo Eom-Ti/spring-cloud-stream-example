@@ -1,4 +1,4 @@
-package com.example.exrate.domain;
+package com.example.exrate.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

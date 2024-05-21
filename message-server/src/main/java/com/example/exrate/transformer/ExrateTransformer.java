@@ -1,6 +1,6 @@
 package com.example.exrate.transformer;
 
-import com.example.exrate.domain.ExRate;
+import com.example.exrate.data.ExRate;
 import com.example.exrate.functions.TransformExrateData;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
