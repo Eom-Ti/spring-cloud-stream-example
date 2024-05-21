@@ -1,6 +1,6 @@
 package com.example.log;
 
-import com.example.exrate.data.ExRate;
+import com.example.exrate.domain.ExRate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
