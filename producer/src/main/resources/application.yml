@@ -16,11 +16,12 @@ spring:
           destination: raw-exrate-data
           content-type: text/plain
 
-exrate:
-  api:
-    base-url: https://www.koreaexim.go.kr
-    exrate-url: /site/program/financial/exchangeJSON
-    auth-key: ${exrate.krexim.authKey}
+coin:
+  upbit:
+    api:
+      base-url: https://api.upbit.com
+      market-code-url: /v1/market/all
+      candles-minutes-url: /v1/candles/minutes/
 
 server:
   port: 8086
