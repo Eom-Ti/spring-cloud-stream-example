@@ -21,7 +21,7 @@ coin:
     api:
       base-url: https://api.upbit.com
       market-code-url: /v1/market/all
-      candles-minutes-url: /v1/candles/minutes/
+      candles-minutes-url: /v1/candles/minutes/1
 
 server:
   port: 8086
