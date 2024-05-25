@@ -11,13 +11,20 @@ public record UpbitProperties(
         String marketCodeUrl,
         String candlesMinutesUrl
 ) {
-    public String marketCodeRequestUrl() {
-        return baseUrl + marketCodeUrl;
+    public URI marketCodeRequestUri() {
+        return baseUriBuilder()
+                .path(marketCodeUrl)
+                .build().toUri();
     }
 
-    public URI candlesMinutesRequestUrI(String marketCode) {
-        return UriComponentsBuilder.fromPath(baseUrl + candlesMinutesUrl)
+    public URI candlesMinutesRequestUri(String marketCode) {
+        return baseUriBuilder()
+                .path(candlesMinutesUrl)
                 .queryParam("market", marketCode)
                 .build().toUri();
+    }
+
+    private UriComponentsBuilder baseUriBuilder() {
+        return UriComponentsBuilder.fromHttpUrl(baseUrl);
     }
 }
