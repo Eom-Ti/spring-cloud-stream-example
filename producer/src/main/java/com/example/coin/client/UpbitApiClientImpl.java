@@ -1,6 +1,6 @@
 package com.example.coin.client;
 
-import com.example.coin.client.data.MarketCode;
+import com.example.coin.client.data.upbit.UpbitMarketCode;
 import com.example.coin.client.properties.UpbitProperties;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,14 +22,14 @@ public class UpbitApiClientImpl implements CoinApiClient {
     private final ObjectMapper objectMapper;
     private final UpbitProperties upbitProperties;
 
-    private List<MarketCode> marketCodes;
+    private List<String> marketCodes;
 
     @Override
     public String getCandlesByMinute(String marketCode) {
         Assert.hasText(marketCode, "marketCode must not be empty");
 
-        URI requestUri = upbitProperties.candlesMinutesRequestUrI(marketCode);
-        log.info("[UpbitApiClientImpl.getCandlesByMinute]requestUri: {}", requestUri.getPath());
+        URI requestUri = upbitProperties.candlesMinutesRequestUri(marketCode);
+        log.info("[UpbitApiClientImpl.getCandlesByMinute]requestUri: {}", requestUri);
 
         return restClient.get()
                 .uri(requestUri)
@@ -38,20 +38,28 @@ public class UpbitApiClientImpl implements CoinApiClient {
     }
 
     @Override
-    public List<MarketCode> getMarketCodes() {
-        if (!marketCodes.isEmpty()) {
+    public List<String> getMarketCodes() {
+        if (marketCodes != null) {
             return marketCodes;
         }
 
+        URI requestUri = upbitProperties.marketCodeRequestUri();
+        log.info("[UpbitApiClientImpl.getMarketCodes]requestUri: {}", requestUri);
+
         String stringMarketCodes = restClient.get()
-                .uri(upbitProperties.marketCodeRequestUrl())
+                .uri(requestUri)
                 .retrieve()
                 .body(String.class);
 
         log.info("[UpbitApiClientImpl.getMarketCode] marketCodes: {}", stringMarketCodes);
 
         try {
-            marketCodes = objectMapper.readValue(stringMarketCodes, new TypeReference<>() {});
+            List<UpbitMarketCode> upbitMarketCodes = objectMapper.readValue(stringMarketCodes, new TypeReference<>() {});
+            marketCodes =  upbitMarketCodes.stream()
+                    .map(UpbitMarketCode::getCode)
+                    .filter(code -> code.startsWith("KRW"))
+                    .toList();
+
             return marketCodes;
         } catch (Exception e) {
             log.error("[UpbitApiClientImpl.getMarketCode] marketCodes: {}", e.getMessage());
