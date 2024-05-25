@@ -4,16 +4,16 @@ spring:
       - secrets-manager.yml
   cloud:
     function:
-      definition: createExrateDataSupplier
+      definition: createCoinDataSupplier
     stream:
       poller:
         fixed-delay: 20000
       function:
         bindings:
-          createExrateDataSupplier-out-0: output
+          createCoinDataSupplier-out-0: output
       bindings:
         output:
-          destination: raw-exrate-data
+          destination: raw-coin-data
           content-type: text/plain
 
 coin:
