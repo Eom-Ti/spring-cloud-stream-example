@@ -17,11 +17,11 @@ spring:
           transformExrateData-out-0: output
       bindings:
         input:
-          destination: raw-exrate-data
+          destination: raw-coin-data
           content-type: text/plain
-          group: exrate
+          group: coin
         output:
-          destination: exrate-data
+          destination: coin-data
           content-type: application/json
 
 
