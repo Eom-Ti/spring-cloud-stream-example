@@ -10,7 +10,7 @@ spring:
           createCoinDataSupplier-out-0: output
       bindings:
         output:
-          destination: raw-coin-data
+          destination: raw-coin-data-upbit.string
           content-type: text/plain
 
 coin:

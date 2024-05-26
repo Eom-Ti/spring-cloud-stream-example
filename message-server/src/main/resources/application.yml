@@ -9,19 +9,19 @@ spring:
         timeout: 10
   cloud:
     function:
-      definition: transformExrateData
+      definition: transformUpbitCoinData
     stream:
       function:
         bindings:
-          transformExrateData-in-0: input
-          transformExrateData-out-0: output
+          transformUpbitCoinData-in-0: input
+          transformUpbitCoinData-out-0: output
       bindings:
         input:
-          destination: raw-coin-data
+          destination: raw-coin-data-upbit.string
           content-type: text/plain
           group: coin
         output:
-          destination: coin-data
+          destination: coin-data-upbit.json
           content-type: application/json
 
 
