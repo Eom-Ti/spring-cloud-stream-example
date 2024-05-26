@@ -1,7 +1,4 @@
 spring:
-  config:
-    import:
-      - secrets-manager.yml
   cloud:
     function:
       definition: createCoinDataSupplier
