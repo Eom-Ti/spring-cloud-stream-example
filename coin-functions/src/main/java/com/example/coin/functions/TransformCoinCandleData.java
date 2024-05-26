@@ -11,12 +11,13 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 public class TransformCoinCandleData {
-    private TransformCoinCandleData() {
-    }
 
     private static final Logger log = LoggerFactory.getLogger(TransformCoinCandleData.class);
 
-    public static List<CandleDetail> toData(String rawData, ExchangeType exchangeType) {
+    private TransformCoinCandleData() {
+    }
+
+    public static List<Candle> toData(String rawData, ExchangeType exchangeType) {
         log.info("[TransformCoinData.toData] exchangeType : {}, rawData: {}", exchangeType, rawData);
 
         ObjectMapper objectMapper = exchangeType.getObjectMapper();

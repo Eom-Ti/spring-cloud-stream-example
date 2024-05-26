@@ -4,7 +4,7 @@ spring:
       definition: createCoinDataSupplier
     stream:
       poller:
-        fixed-delay: 20000
+        fixed-delay: 100000
       function:
         bindings:
           createCoinDataSupplier-out-0: output

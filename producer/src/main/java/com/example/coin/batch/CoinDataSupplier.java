@@ -38,8 +38,8 @@ public class CoinDataSupplier {
 
             String combinedResult = allFutures.thenApply(value -> futures.stream()
                     .map(CompletableFuture::join)
-                    .collect(Collectors.joining(", ")
-                    )).join();
+                    .collect(Collectors.joining()))
+                    .join();
 
             return MessageBuilder.withPayload(combinedResult)
                     .setHeader(KafkaHeaders.KEY, MESSAGE_KEY.getBytes(StandardCharsets.UTF_8))

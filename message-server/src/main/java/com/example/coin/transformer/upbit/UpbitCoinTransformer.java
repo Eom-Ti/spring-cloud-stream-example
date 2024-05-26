@@ -1,5 +1,6 @@
 package com.example.coin.transformer.upbit;
 
+import com.example.coin.data.Candle;
 import com.example.coin.data.CandleDetail;
 import com.example.coin.functions.ExchangeType;
 import com.example.coin.functions.TransformCoinCandleData;
@@ -19,10 +20,10 @@ public class UpbitCoinTransformer {
     private static final String MESSAGE_KEY = "exrate";
 
     @Bean
-    Function<String, Message<List<CandleDetail>>> transformUpbitCoinData() {
+    Function<String, Message<List<Candle>>> transformUpbitCoinData() {
         return rawData -> {
             System.out.println("rawData = " + rawData);
-            List<CandleDetail> data = TransformCoinCandleData.toData(rawData, ExchangeType.UPBIT);
+            List<Candle> data = TransformCoinCandleData.toData(rawData, ExchangeType.UP_BIT);
             System.out.println("@@@@@@@@@" + data.toString());
             return MessageBuilder.withPayload(data)
                     .setHeader(HEADER_KEY, MESSAGE_KEY.getBytes(StandardCharsets.UTF_8))

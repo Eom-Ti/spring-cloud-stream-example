@@ -52,7 +52,6 @@ public class UpbitApiClientImpl implements CoinApiClient {
                 .body(String.class);
 
         log.info("[UpbitApiClientImpl.getMarketCode] marketCodes: {}", stringMarketCodes);
-
         try {
             List<UpbitMarketCode> upbitMarketCodes = objectMapper.readValue(stringMarketCodes, new TypeReference<>() {});
             marketCodes =  upbitMarketCodes.stream()
