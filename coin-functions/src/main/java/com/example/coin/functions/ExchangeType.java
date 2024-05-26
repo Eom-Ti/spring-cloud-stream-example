@@ -7,23 +7,28 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public enum ExchangeType {
 
-    UPBIT() {
-        @Override
-        public ObjectMapper getObjectMapper() {
-            ObjectMapper objectMapper = new ObjectMapper();
+    UP_BIT {
+        protected ObjectMapper createObjectMapper() {
             SimpleModule customModule = new SimpleModule();
             customModule.addDeserializer(CandleDetail.class, new UpbitCandleDeserializer());
 
-            objectMapper.registerModule(customModule);
-            return objectMapper;
+            return new ObjectMapper().registerModule(customModule);
         }
     },
-    BITHUMB() {
-        @Override
-        public ObjectMapper getObjectMapper() {
+    BIT_THUMB {
+        protected ObjectMapper createObjectMapper() {
             return null;
         }
     };
 
-    public abstract ObjectMapper getObjectMapper();
+    private ObjectMapper objectMapper;
+
+    public ObjectMapper getObjectMapper() {
+        if (objectMapper == null) {
+            objectMapper = createObjectMapper();
+        }
+        return objectMapper;
+    }
+
+    protected abstract ObjectMapper createObjectMapper();
 }
