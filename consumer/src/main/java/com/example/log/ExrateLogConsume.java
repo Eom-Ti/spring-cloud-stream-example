@@ -1,6 +1,5 @@
 package com.example.log;
 
-import com.example.exrate.data.ExRate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,7 +10,7 @@ import java.util.function.Consumer;
 public class ExrateLogConsume {
 
     @Bean
-    public Consumer<List<ExRate>> log() {
+    public Consumer<List<String>> log() {
         return exRates -> System.out.println("exRates = " + exRates);
     }
 }
