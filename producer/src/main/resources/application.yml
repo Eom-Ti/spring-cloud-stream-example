@@ -24,4 +24,4 @@ coin:
       candles-minutes-url: /v1/candles/minutes/1
 
 server:
-  port: 8086
+  port: 80861
