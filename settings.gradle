@@ -6,11 +6,11 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'kafka-local-example'
+rootProject.name = 'spring-cloud-stream-example'
 include (
         ':producer',
         ':consumer',
         ':message-server',
-        ':exrate-functions'
+        ':coin-functions'
 )
 
