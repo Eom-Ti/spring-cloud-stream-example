@@ -1,7 +1,9 @@
-package com.example.exrate.transformer;
+package com.example.coin.transformer;
 
-import com.example.exrate.data.ExRate;
-import com.example.exrate.functions.TransformExrateData;
+import com.example.coin.data.Candle;
+import com.example.coin.data.CandleDetail;
+import com.example.coin.functions.ExchangeType;
+import com.example.coin.functions.TransformCoinCandleData;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
@@ -12,16 +14,18 @@ import java.util.List;
 import java.util.function.Function;
 
 @Configuration
-public class ExrateTransformer {
+public class UpbitCoinTransformer {
 
     private static final String HEADER_KEY = "kafka_messageKey";
     private static final String MESSAGE_KEY = "exrate";
 
     @Bean
-    Function<String, Message<List<ExRate>>> transformExrateData() {
+    Function<String, Message<List<CandleDetail>>> transformUpbitCoinData() {
         return rawData -> {
-            List<ExRate> exRates = TransformExrateData.toData(rawData);
-            return MessageBuilder.withPayload(exRates)
+            System.out.println("rawData = " + rawData);
+            List<CandleDetail> data = TransformCoinCandleData.toData(rawData, ExchangeType.UPBIT);
+            System.out.println("@@@@@@@@@" + data.toString());
+            return MessageBuilder.withPayload(data)
                     .setHeader(HEADER_KEY, MESSAGE_KEY.getBytes(StandardCharsets.UTF_8))
                     .build();
         };
