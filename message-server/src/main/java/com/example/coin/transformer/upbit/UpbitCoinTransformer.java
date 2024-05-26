@@ -1,6 +1,5 @@
-package com.example.coin.transformer;
+package com.example.coin.transformer.upbit;
 
-import com.example.coin.data.Candle;
 import com.example.coin.data.CandleDetail;
 import com.example.coin.functions.ExchangeType;
 import com.example.coin.functions.TransformCoinCandleData;
