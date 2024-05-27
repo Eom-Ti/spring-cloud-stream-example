@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -18,10 +19,13 @@ import java.util.List;
 
 public class UpbitCandleDeserializer extends JsonDeserializer<List<Candle>> {
 
+    private static final String MARKET_FIELD = "market";
+    private static final String PRICE = "opening_price";
+    private static final String CANDLE_TIME = "candle_date_time_utc";
+
     @Override
     public List<Candle> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         List<Candle> candles = new ArrayList<>();
-
         while (!jsonParser.isClosed()) {
             JsonNode rooNode = jsonParser.readValueAsTree();
 
@@ -30,9 +34,9 @@ public class UpbitCandleDeserializer extends JsonDeserializer<List<Candle>> {
             }
 
             for (JsonNode node : rooNode) {
-                String market = node.get("market").asText();
-                ZonedDateTime candleDateTimeUtc = LocalDate.parse(node.get("candle_date_time_utc").asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).atStartOfDay(ZoneOffset.UTC);
-                BigDecimal price = new BigDecimal(node.get("opening_price").asText()).setScale(6);
+                String market = node.get(MARKET_FIELD).asText();
+                BigDecimal price = new BigDecimal(node.get(PRICE).asText()).setScale(6, RoundingMode.HALF_UP);
+                ZonedDateTime candleDateTimeUtc = LocalDate.parse(node.get(CANDLE_TIME).asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).atStartOfDay(ZoneOffset.UTC);
 
                 CandleDetail candleDetail = new CandleDetail(market, price, candleDateTimeUtc);
                 Candle candle = new Candle();
