@@ -1,6 +1,5 @@
 package com.example.coin.functions;
 
-import com.example.coin.data.CandleDetail;
 import com.example.coin.functions.upbit.UpbitCandleDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
