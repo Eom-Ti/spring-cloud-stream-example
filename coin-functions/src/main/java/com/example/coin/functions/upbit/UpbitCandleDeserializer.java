@@ -16,6 +16,8 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class UpbitCandleDeserializer extends JsonDeserializer<List<Candle>> {
 
@@ -26,24 +28,25 @@ public class UpbitCandleDeserializer extends JsonDeserializer<List<Candle>> {
     @Override
     public List<Candle> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         List<Candle> candles = new ArrayList<>();
-        while (!jsonParser.isClosed()) {
-            JsonNode rooNode = jsonParser.readValueAsTree();
 
-            if (rooNode == null) {
+        while (!jsonParser.isClosed()) {
+            JsonNode rootNode = jsonParser.readValueAsTree();
+
+            if (rootNode == null) {
                 continue;
             }
 
-            for (JsonNode node : rooNode) {
-                String market = node.get(MARKET_FIELD).asText();
-                BigDecimal price = new BigDecimal(node.get(PRICE).asText()).setScale(6, RoundingMode.HALF_UP);
-                ZonedDateTime candleDateTimeUtc = LocalDate.parse(node.get(CANDLE_TIME).asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).atStartOfDay(ZoneOffset.UTC);
+            Candle candle = StreamSupport.stream(rootNode.spliterator(), false)
+                    .map(node -> {
+                        String market = node.get(MARKET_FIELD).asText();
+                        BigDecimal price = new BigDecimal(node.get(PRICE).asText()).setScale(6, RoundingMode.HALF_UP);
+                        ZonedDateTime candleDateTimeUtc = LocalDate.parse(node.get(CANDLE_TIME).asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+                                .atStartOfDay(ZoneOffset.UTC);
 
-                CandleDetail candleDetail = new CandleDetail(market, price, candleDateTimeUtc);
-                Candle candle = new Candle();
-                candle.addCandleDetail(candleDetail);
+                        return new CandleDetail(market, price, candleDateTimeUtc);
+                    }).collect(Collectors.collectingAndThen(Collectors.toUnmodifiableList(), Candle::new));
 
-                candles.add(candle);
-            }
+            candles.add(candle);
         }
         return candles;
     }
