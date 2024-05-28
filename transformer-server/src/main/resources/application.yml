@@ -1,7 +1,7 @@
 spring:
   docker:
     compose:
-      file: './message-server/kafka-compose.yml'
+      file: './transformer-server/kafka-compose.yml'
       enabled: true
       lifecycle-management: start_and_stop
       stop:
