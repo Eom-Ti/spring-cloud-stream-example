@@ -1,18 +1,13 @@
 package com.example.coin.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Candle {
 
-    private final List<CandleDetail> candleDetails = new ArrayList<>();
+    private final List<CandleDetail> candleDetails;
 
-    public List<CandleDetail> getCandleDetails() {
-        return candleDetails;
-    }
-
-    public void addCandleDetail(CandleDetail candleDetail) {
-        this.candleDetails.add(candleDetail);
+    public Candle(List<CandleDetail> candleDetails) {
+        this.candleDetails = candleDetails;
     }
 
     @Override
