@@ -23,7 +23,7 @@ public class TransformCoinCandleData {
         try {
             return objectMapper.readValue(rawData, new TypeReference<>() {});
         } catch (JsonProcessingException e) {
-            log.error("[exrate-functions][TransformExrateData] faile readValue", e);
+            log.error("[TransformCoinData.toData] fail readValue", e);
             throw new RuntimeException(e);
         }
     }
