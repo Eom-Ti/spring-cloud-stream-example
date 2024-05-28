@@ -31,7 +31,6 @@ public class UpbitCandleDeserializer extends JsonDeserializer<List<Candle>> {
 
         while (!jsonParser.isClosed()) {
             JsonNode rootNode = jsonParser.readValueAsTree();
-
             if (rootNode == null) {
                 continue;
             }
