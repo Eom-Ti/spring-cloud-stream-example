@@ -5,11 +5,11 @@ import java.time.ZonedDateTime;
 
 public class CandleDetail {
 
-    private String market;
+    private final String market;
 
-    private BigDecimal price;
+    private final BigDecimal price;
 
-    private ZonedDateTime candleTime;
+    private final ZonedDateTime candleTime;
 
     public CandleDetail(String market, BigDecimal price, ZonedDateTime candleTime) {
         this.market = market;
