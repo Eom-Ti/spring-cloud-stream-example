@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MessageServerApplication {
+public class TransformerServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MessageServerApplication.class, args);
+        SpringApplication.run(TransformerServerApplication.class, args);
     }
 }

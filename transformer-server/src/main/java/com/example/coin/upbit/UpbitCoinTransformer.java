@@ -1,11 +1,14 @@
-package com.example.coin.transformer.upbit;
+package com.example.coin.upbit;
 
 import com.example.coin.data.Candle;
 import com.example.coin.functions.ExchangeType;
 import com.example.coin.functions.TransformCoinCandleData;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.nio.charset.StandardCharsets;
@@ -13,6 +16,7 @@ import java.util.List;
 import java.util.function.Function;
 
 @Configuration
+@RequiredArgsConstructor
 public class UpbitCoinTransformer {
 
     private static final String HEADER_KEY = "kafka_messageKey";

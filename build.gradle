@@ -23,7 +23,7 @@ subprojects {
     }
 }
 
-def springProjects = [':producer', ':message-server', ':consumer']
+def springProjects = [':producer', ':transformer-server', ':consumer']
 
 springProjects.each {projectPath ->
     project(projectPath) {

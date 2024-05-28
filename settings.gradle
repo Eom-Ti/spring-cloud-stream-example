@@ -10,7 +10,7 @@ rootProject.name = 'spring-cloud-stream-example'
 include (
         ':producer',
         ':consumer',
-        ':message-server',
+        ':transformer-server',
         ':coin-functions'
 )
 
