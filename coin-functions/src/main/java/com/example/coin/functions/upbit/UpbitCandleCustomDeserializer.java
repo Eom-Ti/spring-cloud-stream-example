@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class UpbitCandleDeserializer extends JsonDeserializer<List<Candle>> {
+public class UpbitCandleCustomDeserializer extends JsonDeserializer<List<Candle>> {
 
     private static final String MARKET_FIELD = "market";
     private static final String PRICE = "opening_price";

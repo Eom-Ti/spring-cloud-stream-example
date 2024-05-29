@@ -1,6 +1,6 @@
 package com.example.coin.functions;
 
-import com.example.coin.functions.upbit.UpbitCandleDeserializer;
+import com.example.coin.functions.upbit.UpbitCandleCustomDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
@@ -11,7 +11,7 @@ public enum ExchangeType {
     UP_BIT {
         protected ObjectMapper createObjectMapper() {
             SimpleModule customModule = new SimpleModule();
-            customModule.addDeserializer(List.class, new UpbitCandleDeserializer());
+            customModule.addDeserializer(List.class, new UpbitCandleCustomDeserializer());
 
             return new ObjectMapper().registerModule(customModule);
         }
