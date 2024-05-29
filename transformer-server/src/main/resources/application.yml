@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: kafka.yml
   docker:
     compose:
       file: './transformer-server/kafka-compose.yml'
@@ -21,8 +23,18 @@ spring:
           content-type: text/plain
           group: coin
         output:
+          producer:
+            use-native-encoding: true
           destination: coin-data-upbit.json
           content-type: application/json
+#      kafka:
+#        bindings:
+#          output:
+#            producer:
+#              configuration:
+#                value:
+#                  serializer: com.example.coin.upbit.support.kafka.CandleSerializer
+
 
 
 server:
