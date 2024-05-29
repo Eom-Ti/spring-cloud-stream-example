@@ -4,6 +4,7 @@ import com.example.coin.data.Candle;
 import com.example.coin.functions.ExchangeType;
 import com.example.coin.functions.TransformCoinCandleData;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
@@ -13,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.function.Function;
 
+@Slf4j
 @Configuration
 @RequiredArgsConstructor
 public class UpbitCoinTransformer {
@@ -23,10 +25,11 @@ public class UpbitCoinTransformer {
     @Bean
     Function<String, Message<List<Candle>>> transformUpbitCoinData() {
         return rawData -> {
-            System.out.println("rawData = " + rawData);
-            List<Candle> data = TransformCoinCandleData.toData(rawData, ExchangeType.UP_BIT);
-            System.out.println("@@@@@@@@@" + data.toString());
-            return MessageBuilder.withPayload(data)
+            log.info("Transforming upbit coin data");
+            List<Candle> candles = TransformCoinCandleData.toData(rawData, ExchangeType.UP_BIT);
+            log.info("Transforming upbit coin data completed : {}", candles);
+
+            return MessageBuilder.withPayload(candles)
                     .setHeader(HEADER_KEY, MESSAGE_KEY.getBytes(StandardCharsets.UTF_8))
                     .build();
         };
