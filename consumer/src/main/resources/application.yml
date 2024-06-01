@@ -1,15 +1,22 @@
 spring:
+  docker:
+    compose:
+      file: './consumer/redis-compose.yml'
+      enabled: true
+      lifecycle-management: start_and_stop
+      stop:
+        command: down
+        timeout: 10
   cloud:
     function:
-      definition: log
+      definition: generateReport|log
     stream:
       function:
         bindings:
           log-in-0: input
       bindings:
         input:
-          destination: exrate-data
+          destination: coin-data-upbit.json
           group: log
-
 server:
   port: 8087
