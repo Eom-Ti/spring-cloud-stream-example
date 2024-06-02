@@ -13,7 +13,7 @@ spring:
     stream:
       function:
         bindings:
-          log-in-0: input
+          generateReportlog-in-0: input
       bindings:
         input:
           destination: coin-data-upbit.json
