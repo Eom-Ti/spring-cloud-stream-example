@@ -8,4 +8,12 @@ public record CandleDetail(
         BigDecimal price,
         ZonedDateTime candleTime
 ) {
+    public BigDecimal calcPriceDiff(CandleDetail candleDetail) {
+        if (!market.equals(candleDetail.market)) {
+            throw new IllegalArgumentException("market is not equal market");
+        }
+
+        return price.subtract(candleDetail.price);
+    }
+
 }
