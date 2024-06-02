@@ -2,12 +2,16 @@ package com.example.coin.log;
 
 import com.example.coin.cache.CoinCacheService;
 import com.example.coin.data.Candle;
-import io.lettuce.core.api.push.PushListener;
+import com.example.coin.data.CandleDetail;
+import com.example.coin.functions.GenerateCoinPriceDiffReport;
+import com.example.coin.functions.log.data.CoinPriceDiff;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -19,9 +23,21 @@ public class ExrateLogConsume {
     private final CoinCacheService coinCacheService;
 
     @Bean
-    public Function<List<Candle>, List<Candle>> generateReport() {
+    public Function<List<Candle>, String> generateReport() {
+        List<CoinPriceDiff> coinPriceDiffs = new ArrayList<>();
 
-        return coinCacheService::put;
+        return candles -> {
+            candles.forEach(candle -> candle.candleDetails().forEach(candleDetail -> {
+                CandleDetail cacheCandleDetail = coinCacheService.get(candleDetail);
+
+                BigDecimal coinDiff = cacheCandleDetail.calcPriceDiff(candleDetail);
+
+                CoinPriceDiff coinPriceDiff = new CoinPriceDiff(candleDetail.market(), coinDiff, candleDetail.candleTime());
+                coinPriceDiffs.add(coinPriceDiff);
+                coinCacheService.put(candles);
+            }));
+            return GenerateCoinPriceDiffReport.generateCoinPriceDiffReport(coinPriceDiffs);
+        };
     }
 
     @Bean
