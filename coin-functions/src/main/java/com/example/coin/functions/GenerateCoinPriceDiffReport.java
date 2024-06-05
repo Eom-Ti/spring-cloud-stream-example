@@ -11,15 +11,22 @@ public class GenerateCoinPriceDiffReport {
 
     private static final String BLUE_DECREASE_SYMBOL = "\u001B[34m\u25BC\u001B[0m";
     private static final String RED_INCREASE_SYMBOL = "\u001B[31m\u25B2\u001B[0m";
+    private static final String MARKET_FIELD = "MARKET : ";
+    private static final String DIFF_FIELD = "DIFF : ";
+    private static final String TIME_FIELD = "TIME : ";
     private static final String SAME_SYMBOL = "--";
 
     public static String generateCoinPriceDiffReport(List<CoinPriceDiff> coinPriceDiffs) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (CoinPriceDiff coinPriceDiff : coinPriceDiffs) {
-            stringBuilder.append(coinPriceDiff.market())
-                    .append(getSymbol(coinPriceDiff))
+            stringBuilder.append(getSymbol(coinPriceDiff))
+                    .append(" ")
+                    .append(MARKET_FIELD)
+                    .append(coinPriceDiff.market())
+                    .append(DIFF_FIELD)
                     .append(coinPriceDiff.diff())
+                    .append(TIME_FIELD)
                     .append(coinPriceDiff.candleTime())
                     .append("\n");
         }
