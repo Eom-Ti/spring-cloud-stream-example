@@ -1,4 +1,4 @@
-package com.example.coin.functions;
+package com.example.coin.data;
 
 import com.example.coin.functions.upbit.UpbitCandleCustomDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
