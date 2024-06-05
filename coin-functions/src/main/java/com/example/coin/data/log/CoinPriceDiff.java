@@ -1,4 +1,4 @@
-package com.example.coin.data.log.data;
+package com.example.coin.data.log;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
