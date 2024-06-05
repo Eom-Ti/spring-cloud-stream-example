@@ -1,4 +1,4 @@
-package com.example.coin.functions.upbit.log.data;
+package com.example.coin.data.log.data;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;

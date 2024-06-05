@@ -1,6 +1,6 @@
 package com.example.coin.functions;
 
-import com.example.coin.functions.upbit.log.data.CoinPriceDiff;
+import com.example.coin.data.log.data.CoinPriceDiff;
 
 import java.util.List;
 

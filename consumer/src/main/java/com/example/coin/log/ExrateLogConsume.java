@@ -4,7 +4,7 @@ import com.example.coin.cache.CoinCacheService;
 import com.example.coin.data.message.Candle;
 import com.example.coin.data.message.CandleDetail;
 import com.example.coin.functions.GenerateCoinPriceDiffReport;
-import com.example.coin.functions.upbit.log.data.CoinPriceDiff;
+import com.example.coin.data.log.data.CoinPriceDiff;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
