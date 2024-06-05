@@ -15,20 +15,23 @@ public class GenerateCoinPriceDiffReport {
     private static final String DIFF_FIELD = "DIFF : ";
     private static final String TIME_FIELD = "TIME : ";
     private static final String SAME_SYMBOL = "--";
+    private static final String SPACE = " ";
 
     public static String generateCoinPriceDiffReport(List<CoinPriceDiff> coinPriceDiffs) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (CoinPriceDiff coinPriceDiff : coinPriceDiffs) {
-            stringBuilder.append(getSymbol(coinPriceDiff))
-                    .append(" ")
+            stringBuilder.append("\n")
+                    .append(getSymbol(coinPriceDiff))
+                    .append(SPACE)
                     .append(MARKET_FIELD)
                     .append(coinPriceDiff.market())
+                    .append(SPACE)
                     .append(DIFF_FIELD)
                     .append(coinPriceDiff.diff())
+                    .append(SPACE)
                     .append(TIME_FIELD)
-                    .append(coinPriceDiff.candleTime())
-                    .append("\n");
+                    .append(coinPriceDiff.candleTime());
         }
         return stringBuilder.toString();
     }
