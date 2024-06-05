@@ -1,6 +1,7 @@
 package com.example.coin.data.log;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.ZonedDateTime;
 
 public record CoinPriceDiff(
@@ -13,6 +14,6 @@ public record CoinPriceDiff(
     }
 
     public boolean isSame() {
-        return diff.equals(BigDecimal.ZERO);
+        return diff.equals(BigDecimal.ZERO.setScale(6, RoundingMode.HALF_UP));
     }
 }
