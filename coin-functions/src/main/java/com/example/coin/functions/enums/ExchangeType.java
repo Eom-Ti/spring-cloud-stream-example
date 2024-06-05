@@ -1,4 +1,4 @@
-package com.example.coin.data;
+package com.example.coin.functions.enums;
 
 import com.example.coin.functions.upbit.UpbitCandleCustomDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;

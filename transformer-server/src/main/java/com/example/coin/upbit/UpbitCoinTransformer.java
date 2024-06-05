@@ -1,7 +1,7 @@
 package com.example.coin.upbit;
 
 import com.example.coin.data.message.Candle;
-import com.example.coin.data.ExchangeType;
+import com.example.coin.functions.enums.ExchangeType;
 import com.example.coin.functions.TransformCoinCandleData;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

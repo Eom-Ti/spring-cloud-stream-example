@@ -1,6 +1,6 @@
 package com.example.coin.functions;
 
-import com.example.coin.data.ExchangeType;
+import com.example.coin.functions.enums.ExchangeType;
 import com.example.coin.data.message.Candle;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
