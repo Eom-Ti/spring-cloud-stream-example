@@ -6,6 +6,9 @@ import java.util.List;
 
 public class GenerateCoinPriceDiffReport {
 
+    private GenerateCoinPriceDiffReport() {
+    }
+
     private static final String BLUE_DECREASE_SYMBOL = "\u001B[34m\u25BC\u001B[0m";
     private static final String RED_INCREASE_SYMBOL = "\u001B[31m\u25B2\u001B[0m";
     private static final String SAME_SYMBOL = "--";
