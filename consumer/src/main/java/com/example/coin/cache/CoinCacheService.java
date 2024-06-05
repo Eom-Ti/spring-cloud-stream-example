@@ -1,7 +1,7 @@
 package com.example.coin.cache;
 
-import com.example.coin.data.Candle;
-import com.example.coin.data.CandleDetail;
+import com.example.coin.data.message.Candle;
+import com.example.coin.data.message.CandleDetail;
 
 import java.util.List;
 

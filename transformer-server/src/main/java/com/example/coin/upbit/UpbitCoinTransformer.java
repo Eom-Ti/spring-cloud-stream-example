@@ -1,6 +1,6 @@
 package com.example.coin.upbit;
 
-import com.example.coin.data.Candle;
+import com.example.coin.data.message.Candle;
 import com.example.coin.functions.ExchangeType;
 import com.example.coin.functions.TransformCoinCandleData;
 import lombok.RequiredArgsConstructor;

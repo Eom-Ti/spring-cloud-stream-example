@@ -1,6 +1,6 @@
 package com.example.coin.functions;
 
-import com.example.coin.data.Candle;
+import com.example.coin.data.message.Candle;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

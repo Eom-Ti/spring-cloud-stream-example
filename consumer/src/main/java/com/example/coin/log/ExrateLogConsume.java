@@ -1,8 +1,8 @@
 package com.example.coin.log;
 
 import com.example.coin.cache.CoinCacheService;
-import com.example.coin.data.Candle;
-import com.example.coin.data.CandleDetail;
+import com.example.coin.data.message.Candle;
+import com.example.coin.data.message.CandleDetail;
 import com.example.coin.functions.GenerateCoinPriceDiffReport;
 import com.example.coin.functions.upbit.log.data.CoinPriceDiff;
 import lombok.RequiredArgsConstructor;

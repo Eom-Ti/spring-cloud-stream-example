@@ -1,7 +1,7 @@
 package com.example.coin.cache;
 
-import com.example.coin.data.Candle;
-import com.example.coin.data.CandleDetail;
+import com.example.coin.data.message.Candle;
+import com.example.coin.data.message.CandleDetail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

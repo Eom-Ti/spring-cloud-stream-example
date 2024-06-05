@@ -1,7 +1,7 @@
 package com.example.coin.functions.upbit;
 
-import com.example.coin.data.Candle;
-import com.example.coin.data.CandleDetail;
+import com.example.coin.data.message.Candle;
+import com.example.coin.data.message.CandleDetail;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;

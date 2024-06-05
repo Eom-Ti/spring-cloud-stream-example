@@ -1,6 +1,6 @@
 package com.example.coin.upbit.support.kafka;
 
-import com.example.coin.data.Candle;
+import com.example.coin.data.message.Candle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
