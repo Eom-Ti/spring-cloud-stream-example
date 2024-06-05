@@ -6,6 +6,7 @@ import com.example.coin.data.message.CandleDetail;
 import com.example.coin.functions.GenerateCoinPriceDiffReport;
 import com.example.coin.data.log.CoinPriceDiff;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+@Slf4j
 @Configuration
 @RequiredArgsConstructor
 public class ExrateLogConsume {
@@ -43,8 +45,6 @@ public class ExrateLogConsume {
     @Bean
     @ConditionalOnProperty(value="spring.cloud.function.definition", havingValue = "generateReport|log")
     public Consumer<String> log() {
-        return test -> {
-            System.out.println("test2 = " + test);
-        };
+        return log::info;
     }
 }
