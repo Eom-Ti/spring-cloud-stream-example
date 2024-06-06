@@ -3,7 +3,7 @@ spring:
     import: kafka.yml
   docker:
     compose:
-      file: './transformer-server/kafka-compose.yml'
+      file: './transformer-server/rabbitmq-compose.yml'
       enabled: true
       lifecycle-management: start_and_stop
       stop:
@@ -13,6 +13,7 @@ spring:
     function:
       definition: transformUpbitCoinData
     stream:
+      default-binder: rabbit
       function:
         bindings:
           transformUpbitCoinData-in-0: input
@@ -27,13 +28,6 @@ spring:
             use-native-encoding: true
           destination: coin-data-upbit.json
           content-type: application/json
-#      kafka:
-#        bindings:
-#          output:
-#            producer:
-#              configuration:
-#                value:
-#                  serializer: com.example.coin.upbit.support.kafka.CandleSerializer
 
 
 
