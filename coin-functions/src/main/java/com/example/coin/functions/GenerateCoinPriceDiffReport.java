@@ -14,7 +14,7 @@ public class GenerateCoinPriceDiffReport {
     private static final String MARKET_FIELD = "MARKET : ";
     private static final String DIFF_FIELD = "DIFF : ";
     private static final String TIME_FIELD = "TIME : ";
-    private static final String SAME_SYMBOL = "--";
+    private static final String SAME_SYMBOL = "-";
     private static final String SPACE = " ";
 
     public static String generateCoinPriceDiffReport(List<CoinPriceDiff> coinPriceDiffs) {
