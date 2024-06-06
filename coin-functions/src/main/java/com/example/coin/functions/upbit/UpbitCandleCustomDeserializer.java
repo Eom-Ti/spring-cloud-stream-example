@@ -10,8 +10,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDate;
-import java.time.ZoneOffset;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -39,8 +39,7 @@ public class UpbitCandleCustomDeserializer extends JsonDeserializer<List<Candle>
                     .map(node -> {
                         String market = node.get(MARKET_FIELD).asText();
                         BigDecimal price = new BigDecimal(node.get(PRICE).asText()).setScale(6, RoundingMode.HALF_UP);
-                        ZonedDateTime candleDateTimeUtc = LocalDate.parse(node.get(CANDLE_TIME).asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-                                .atStartOfDay(ZoneOffset.UTC);
+                        ZonedDateTime candleDateTimeUtc = LocalDateTime.parse(node.get(CANDLE_TIME).asText(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).atZone(ZoneId.of("UTC"));
 
                         return new CandleDetail(market, price, candleDateTimeUtc);
                     }).collect(Collectors.collectingAndThen(Collectors.toUnmodifiableList(), Candle::new));
