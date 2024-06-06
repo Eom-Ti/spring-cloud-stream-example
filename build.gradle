@@ -37,6 +37,9 @@ springProjects.each {projectPath ->
             //start spring cloud kafka
             implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka'
 
+            //start spring cloud rabbit-mq
+            implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
+
             //spring cloud-aws-starter
             implementation 'io.awspring.cloud:spring-cloud-aws-starter-secrets-manager'
 
