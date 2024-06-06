@@ -31,13 +31,12 @@ public class ExrateLogConsume {
         return candles -> {
             candles.forEach(candle -> candle.candleDetails().forEach(candleDetail -> {
                 CandleDetail cacheCandleDetail = coinCacheService.get(candleDetail);
-
                 BigDecimal coinDiff = cacheCandleDetail.calcPriceDiff(candleDetail);
 
                 CoinPriceDiff coinPriceDiff = new CoinPriceDiff(candleDetail.market(), coinDiff, candleDetail.candleTime());
                 coinPriceDiffs.add(coinPriceDiff);
-                coinCacheService.put(candles);
             }));
+            coinCacheService.put(candles);
             return GenerateCoinPriceDiffReport.generateCoinPriceDiffReport(coinPriceDiffs);
         };
     }
