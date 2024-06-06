@@ -5,6 +5,7 @@ spring:
     stream:
       poller:
         fixed-delay: 20000
+      default-binder: rabbit
       function:
         bindings:
           createCoinDataSupplier-out-0: output

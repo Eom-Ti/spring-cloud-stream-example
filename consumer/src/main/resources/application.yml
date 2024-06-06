@@ -11,6 +11,7 @@ spring:
     function:
       definition: generateReport|log
     stream:
+      default-binder: rabbit
       function:
         bindings:
           generateReportlog-in-0: input
