@@ -21,7 +21,7 @@ public class RedisCoinCacheService implements CoinCacheService {
     public void put(List<Candle> candles) {
         candles.forEach(candle -> candle.candleDetails().forEach(candleDetail -> {
             String market = candleDetail.market();
-            redisTemplate.opsForValue().set(market, candleDetail, 20000, TimeUnit.MILLISECONDS);
+            redisTemplate.opsForValue().set(market, candleDetail, 70000, TimeUnit.MILLISECONDS);
         }));
     }
 
