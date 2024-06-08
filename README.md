@@ -8,6 +8,7 @@ Srping Cloud Stream의 기능을 실험해 볼 수 있도록 구성한 간단한
 consumer, transformer-server, producer 에서 사용할 수 있는 함수, pojo 형태의 객체를 가지고있는 모듈입니다.
 ## consumer
 Spring Boot Application으로 Candle 데이터 객체를 수신하고, 기존의 데이터는 캐시를 통해 관리하며, 상승/하락 의 정보를 기록하는 역할을 수행합니다.
+
 ![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/d9d98229-b38f-48bf-8367-066f581fbd44)
 
 ## producer
