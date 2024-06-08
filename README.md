@@ -19,3 +19,8 @@ Srping Boot Application으로 String 데이터를 수신하여 코인 Candle 데
 # POC(Project Flow)
 ![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/7adf22e8-1d3c-44f9-b775-5c5191ccf78d)
 
+## Project Flow
+### data Polling - Produce Server
+지정된 거래소로 부터 일정시간(1분) 동안 각 코인의 거래 Canlde 을 조회합니다.
+### Publish String Data - Produce Server
+메시징 프레임워크를 통해 String Type의 데이터를 발행합니다.(이때 Kafka, RabbitMQ를 사용가능합니다.)
