@@ -24,7 +24,7 @@ Spring Boot Application으로 코인의 현재 거래 현황(Candle)을 거래�
 ## transformer-server
 Srping Boot Application으로 String 데이터를 수신하여 코인 Candle 데이터 객체로 변환하여 메시지를 발행하는 역할을 수행합니다.
 
-# POC(Project Flow)
+# PoC
 ![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/7adf22e8-1d3c-44f9-b775-5c5191ccf78d)
 
 ## Project Flow
