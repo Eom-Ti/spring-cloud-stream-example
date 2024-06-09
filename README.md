@@ -16,13 +16,34 @@ Srping Cloud Stream의 기능을 실험해 볼 수 있도록 구성한 간단한
 consumer, transformer-server, producer 에서 사용할 수 있는 함수, pojo 형태의 객체를 가지고있는 모듈입니다.
 ## consumer
 Spring Boot Application으로 Candle 데이터 객체를 수신하고, 기존의 데이터는 캐시를 통해 관리하며, 상승/하락 의 정보를 기록하는 역할을 수행합니다.
-
 ![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/d9d98229-b38f-48bf-8367-066f581fbd44)
+
+해당 Application에선 캐시 데이터 관리를 위해 Redis를 사용중이며, `org.springframework.boot:spring-boot-docker-compose`를 활용하여 docker container를 관리하고 있습니다. 자세한 설정은 아래의 transformer-server를 참조 부탁드립니다.
+```text
+redis-compose.yml
+```
 
 ## producer
 Spring Boot Application으로 코인의 현재 거래 현황(Candle)을 거래소로 부터 조회하여 String 데이터를 지정된 대상(`Kafka` or `RabbigMq`)으로 전송하는 역할을 수행합니다.
 ## transformer-server
 Srping Boot Application으로 String 데이터를 수신하여 코인 Candle 데이터 객체로 변환하여 메시지를 발행하는 역할을 수행합니다.
+
+해당 Application에서는 `org.springframework.boot:spring-boot-docker-compose`를 활용하여 docker compose를 프로젝트 시작과 종료시 자동으로 실행할 수 있게 설정되어 있습니다.
+초기 시작시 docker container 구성 작업에 5분정도의 시간이 소요될 수 있습니다.(docer image pull, conatiner config)
+```yml
+  docker:
+    compose:
+      file: './transformer-server/rabbitmq-compose.yml'
+      enabled: true
+      lifecycle-management: start_and_stop
+      stop:
+        command: down
+        timeout: 10
+```
+```text
+kafka-compse.yml
+rabbitmq-compse.yml
+```
 
 # PoC
 ![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/7adf22e8-1d3c-44f9-b775-5c5191ccf78d)
