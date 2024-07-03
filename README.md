@@ -47,7 +47,7 @@ rabbitmq-compse.yml
 ```
 
 # Poc
-![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/33d5c6e9-5b9b-4b94-a744-06b680a98267)
+![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/543adbfd-20cb-4abf-bce0-d8b895553314)
 
 ## Project Flow
 ### data Polling - Produce Server
