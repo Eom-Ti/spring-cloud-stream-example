@@ -46,8 +46,8 @@ kafka-compse.yml
 rabbitmq-compse.yml
 ```
 
-# PoC
-![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/7adf22e8-1d3c-44f9-b775-5c5191ccf78d)
+# Poc
+![image](https://github.com/Eom-Ti/spring-cloud-stream-example/assets/71249347/33d5c6e9-5b9b-4b94-a744-06b680a98267)
 
 ## Project Flow
 ### data Polling - Produce Server
